@@ -12,7 +12,7 @@ const OrganizationInfo = sequelize.define('organization_info', {
   phone: { type: DataTypes.STRING },
 });
 
-Organization.hasOne(OrganizationInfo);
+Organization.hasOne(OrganizationInfo, { as: 'info' });
 OrganizationInfo.belongsTo(Organization);
 
 module.exports = {

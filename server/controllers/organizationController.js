@@ -2,21 +2,18 @@ const ApiError = require('../handlers/apiError');
 const { Organization, OrganizationInfo } = require('../models/index');
 
 class OrganizationController {
-  async create(req, res) {
+  async create(req, res, next) {
     try {
       const { name, info } = req.body;
       const createdOrganization = await Organization.create({ name });
-
-      // if (info) {
-      //   info = JSON.parse(info);
-      //   info.forEach((i) =>
-      //     OrganizationInfo.create({
-      //       full_name: i.full_name,
-      //       phone: i.phone,
-      //       organizationId: createdOrganization.id,
-      //     })
-      //   );
-      // }
+      if (info) {
+        OrganizationInfo.create({
+          full_name: info.full_name,
+          phone: info.phone,
+          organizationId: createdOrganization.id,
+          infoId: createdOrganization.id,
+        });
+      }
 
       return res.json(createdOrganization);
     } catch (err) {
@@ -25,7 +22,14 @@ class OrganizationController {
   }
 
   async getAll(req, res) {
-    const listOrganization = await Organization.findAndCountAll();
+    const { limit, page } = req.query;
+    limit = limit || 10;
+    page = page || 1;
+    offset = limit * page - limit;
+    const listOrganization = await Organization.findAndCountAll({
+      limit,
+      offset,
+    });
     return res.json(listOrganization);
   }
 
@@ -36,7 +40,7 @@ class OrganizationController {
     }
     const currOrganization = await Organization.findOne({
       where: { id },
-      // include: [{ model: OrganizationInfo, as: 'info' }],
+      include: [{ model: OrganizationInfo, as: 'info' }],
     });
     if (!currOrganization) {
       return next(ApiError.internalServer('организация не найдена'));
@@ -51,6 +55,9 @@ class OrganizationController {
     }
     try {
       const currOrganization = await Organization.destroy({ where: { id } });
+      const currOrganizationInfo = await OrganizationInfo.destroy({
+        where: { organizationId: id },
+      });
       return res.json(currOrganization);
     } catch (err) {
       return next(ApiError.badRequest(err));
@@ -79,6 +86,8 @@ class OrganizationController {
       const selectedOrganization = await Organization.findOne({
         where: { id },
       });
+
+      //TO DO: add apload to organizationInfo
 
       return res.json(selectedOrganization);
     } catch (err) {

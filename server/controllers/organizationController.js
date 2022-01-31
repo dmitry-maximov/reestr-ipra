@@ -22,10 +22,10 @@ class OrganizationController {
   }
 
   async getAll(req, res) {
-    const { limit, page } = req.query;
+    let { limit, page } = req.query;
     limit = limit || 10;
     page = page || 1;
-    offset = limit * page - limit;
+    let offset = limit * page - limit;
     const listOrganization = await Organization.findAndCountAll({
       limit,
       offset,

@@ -3,17 +3,28 @@ import { fetchOrganizations } from '../api/organizationAPI';
 
 function Reestr() {
   const [orgs, setOrgs] = useState([]);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
 
-  useEffect(() => async () => {
-    const response = await fetchOrganizations(limit, page);
-    setOrgs([...orgs, ...response.data]);
-  });
+  useEffect(() => {
+    async function fetchMyAPI() {
+      let response = await fetchOrganizations(1, 10);
+      const { rows } = response;
+      setOrgs(rows);
+    }
+
+    fetchMyAPI();
+  }, []);
 
   return (
     <>
       <h1>Страница реестра</h1>
+      <ol>
+        {orgs &&
+          orgs.map((item) => (
+            <li style={{ marginTop: 10 }} key={item.id}>
+              {item.name}
+            </li>
+          ))}
+      </ol>
     </>
   );
 }

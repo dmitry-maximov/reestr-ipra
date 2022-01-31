@@ -10,6 +10,16 @@
   align-items: center;
 }
 
-.App {
-  text-align: center;
+.navbar {
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: lightgray;
+  justify-content: center;
+}
+
+.navbar__links {
+  margin-left: auto;
 }

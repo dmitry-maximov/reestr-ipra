@@ -1,13 +1,15 @@
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
-import NavBar from './components/NavBar';
+import Lauot from './components/Lauot';
+import NavBar from './components/NavBar/NavBar';
 import './styles/App.css';
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <AppRouter />
+      <Lauot>
+        <AppRouter />
+      </Lauot>
     </BrowserRouter>
   );
 }

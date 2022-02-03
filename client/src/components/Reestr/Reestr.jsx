@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchOrganizations } from '../api/organizationAPI';
+import { fetchOrganizations } from '../../api/organizationAPI';
+import OrganizationItem from '../OrganizationItem/OrganizationItem';
 
 function Reestr() {
   const [orgs, setOrgs] = useState([]);
@@ -16,15 +17,15 @@ function Reestr() {
 
   return (
     <>
-      <h1>Страница реестра</h1>
-      <ol>
-        {orgs &&
-          orgs.map((item) => (
-            <li style={{ marginTop: 10 }} key={item.id}>
-              {item.name}
-            </li>
-          ))}
-      </ol>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '.5rem',
+        }}
+      >
+        {orgs && orgs.map((item) => <OrganizationItem item={item} />)}
+      </div>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import OrganizationPage from '../pages/OrganizationPage';
-import Reestr from '../pages/Reestr';
+import Reestr from '../pages/ReestrPage';
 import InitialPage from '../pages/InitialPage';
 import {
   START_PAGE_ROUTE,

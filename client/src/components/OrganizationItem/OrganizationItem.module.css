@@ -1,0 +1,33 @@
+a > div.organization_container {
+  color: #000;
+}
+
+.organization:hover {
+  box-shadow: 0 5px 11px 0 rgb(128 128 128 / 18%),
+    0 4px 15px 0 rgb(128 128 128 / 15%);
+  outline: 0;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}
+
+.organization {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: #fff;
+  margin: 0.25rem;
+}
+
+.organization__header {
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+}
+
+p.organization__text {
+  color: #747373;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-bottom: 0px;
+}

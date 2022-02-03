@@ -1,6 +1,6 @@
 import OrganizationPage from '../pages/OrganizationPage';
 import Reestr from '../pages/Reestr';
-import StartPage from '../pages/StartPage';
+import InitialPage from '../pages/InitialPage';
 import {
   START_PAGE_ROUTE,
   REESTR_ROUTE,
@@ -10,7 +10,7 @@ import {
 export const publicRoutes = [
   {
     path: START_PAGE_ROUTE,
-    element: <StartPage />,
+    element: <InitialPage />,
   },
   {
     path: REESTR_ROUTE,

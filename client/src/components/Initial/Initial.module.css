@@ -1,0 +1,22 @@
+.start_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.start_wrapper__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 75vh;
+}
+
+.start_wrapper__img {
+  background: url('../../img/deti-invalidy-fon.png') no-repeat center top;
+  height: 31vh;
+  width: 100%;
+  margin: 3em;
+  background-size: 75%;
+}

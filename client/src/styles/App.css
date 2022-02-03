@@ -20,18 +20,3 @@ main {
   height: 100%;
   width: 100%;
 }
-
-.start_wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 4vh;
-}
-
-.wrapper__img {
-  background: url('https://tverweek.com/wp-content/uploads/2015/08/04-08-deti-invalidy.jpg')
-    no-repeat center center;
-  height: 50vh;
-  width: 50vw;
-}

@@ -1,15 +1,18 @@
-const ApiError = require('../handlers/apiError');
-const { Organization, OrganizationInfo } = require('../models/index');
+const ApiError = require("../handlers/apiError");
+const { Organization, OrganizationInfo } = require("../models/index");
 
 class OrganizationController {
   async create(req, res, next) {
     try {
-      const { name, info } = req.body;
-      const createdOrganization = await Organization.create({ name });
+      const { name, addres, phone, info } = req.body;
+      const createdOrganization = await Organization.create({
+        name,
+        addres,
+        phone,
+      });
       if (info) {
         OrganizationInfo.create({
           full_name: info.full_name,
-          phone: info.phone,
           organizationId: createdOrganization.id,
           infoId: createdOrganization.id,
         });
@@ -36,14 +39,14 @@ class OrganizationController {
   async getOne(req, res, next) {
     const { id } = req.params;
     if (!id) {
-      return next(ApiError.badRequest('не передан параметр id'));
+      return next(ApiError.badRequest("не передан параметр id"));
     }
     const currOrganization = await Organization.findOne({
       where: { id },
-      include: [{ model: OrganizationInfo, as: 'info' }],
+      include: [{ model: OrganizationInfo, as: "info" }],
     });
     if (!currOrganization) {
-      return next(ApiError.internalServer('организация не найдена'));
+      return next(ApiError.internalServer("организация не найдена"));
     }
     return res.json(currOrganization);
   }
@@ -51,7 +54,7 @@ class OrganizationController {
   async delete(req, res) {
     const { id } = req.params;
     if (!id) {
-      return next(ApiError.badRequest('не передан параметр id'));
+      return next(ApiError.badRequest("не передан параметр id"));
     }
     try {
       const currOrganization = await Organization.destroy({ where: { id } });
@@ -68,18 +71,18 @@ class OrganizationController {
     const { id } = req.params;
 
     if (!id) {
-      return next(ApiError.badRequest('не передан параметр id'));
+      return next(ApiError.badRequest("не передан параметр id"));
     }
 
     const currOrganization = await Organization.findOne({ where: { id } });
     if (!currOrganization) {
-      return next(ApiError.internalServer('организация не найдена'));
+      return next(ApiError.internalServer("организация не найдена"));
     }
 
     const { name } = req.body;
     try {
       const upOrganization = await Organization.update(
-        { name },
+        { name, addres, phone },
         { where: { id } }
       );
 

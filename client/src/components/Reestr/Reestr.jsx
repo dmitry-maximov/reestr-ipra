@@ -22,6 +22,7 @@ function Reestr() {
           display: 'flex',
           flexDirection: 'column',
           padding: '.5rem',
+          minHeight: '65.5vh',
         }}
       >
         {orgs && orgs.map((item) => <OrganizationItem item={item} />)}

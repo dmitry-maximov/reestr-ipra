@@ -1,0 +1,33 @@
+.organizations__list {
+  min-height: 76.5vh;
+}
+
+.organizations__navigation {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+}
+
+select {
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+  font-weight: 400;
+  color: #495057;
+  vertical-align: middle;
+  background: #fff
+    url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%274%27 height=%275%27 viewBox=%270 0 4 5%27%3e%3cpath fill=%27%23343a40%27 d=%27M2 0L0 2h4zm0 5L0 3h4z%27/%3e%3c/svg%3e')
+    no-repeat right 0.75rem center/8px 10px;
+  border: none;
+  border-radius: 0.25rem;
+  appearance: none;
+}
+
+select:hover,
+:focus {
+  box-shadow: 0 5px 11px 0 rgb(128 128 128 / 18%),
+    0 4px 15px 0 rgb(128 128 128 / 15%);
+  outline: 0;
+  display: inline-block;
+  transition: all 0.2s ease-in-out;
+}

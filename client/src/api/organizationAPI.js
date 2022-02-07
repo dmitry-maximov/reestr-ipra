@@ -1,8 +1,8 @@
 import { $host } from './index';
 
-export const fetchOrganizations = async (page, limits = 10) => {
+export const fetchOrganizations = async (page, limit = 10) => {
   const { data } = await $host.get('api/organization', {
-    params: { page, limits },
+    params: { page, limit },
   });
   return data;
 };

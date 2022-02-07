@@ -1,0 +1,17 @@
+.breadcrump_wrapper {
+  background-color: #ecf0f3;
+  color: #646464;
+  font-weight: 350;
+  font-size: 0.85rem;
+}
+
+.breadcrump_list {
+  display: flex;
+  padding: 10px;
+  list-style-type: none;
+}
+
+.breadcrump_list > li::before {
+  content: '\002F';
+  margin: 0 0.5em;
+}

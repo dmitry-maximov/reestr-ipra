@@ -6,6 +6,7 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 #root {
@@ -19,4 +20,26 @@ main {
   flex: 1 0 auto;
   height: 100%;
   width: 100%;
+}
+
+.wrapper {
+  background-color: #f3f7fa;
+  min-height: 76.5vh;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  height: 50px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

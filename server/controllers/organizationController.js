@@ -4,12 +4,15 @@ const { Organization, OrganizationInfo } = require('../models/index');
 class OrganizationController {
   async create(req, res, next) {
     try {
-      const { name, info } = req.body;
-      const createdOrganization = await Organization.create({ name });
+      const { name, addres, phone, info } = req.body;
+      const createdOrganization = await Organization.create({
+        name,
+        addres,
+        phone,
+      });
       if (info) {
         OrganizationInfo.create({
           full_name: info.full_name,
-          phone: info.phone,
           organizationId: createdOrganization.id,
           infoId: createdOrganization.id,
         });
@@ -23,13 +26,16 @@ class OrganizationController {
 
   async getAll(req, res) {
     let { limit, page } = req.query;
-    limit = limit || 10;
+    limit = limit || 9;
     page = page || 1;
-    let offset = limit * page - limit;
-    const listOrganization = await Organization.findAndCountAll({
-      limit,
-      offset,
-    });
+    let offset = limit * page - limit,
+      listOrganization;
+    if (limit > 0)
+      listOrganization = await Organization.findAndCountAll({
+        limit,
+        offset,
+      });
+    else listOrganization = await Organization.findAndCountAll();
     return res.json(listOrganization);
   }
 
@@ -79,7 +85,7 @@ class OrganizationController {
     const { name } = req.body;
     try {
       const upOrganization = await Organization.update(
-        { name },
+        { name, addres, phone },
         { where: { id } }
       );
 

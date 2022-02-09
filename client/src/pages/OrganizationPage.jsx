@@ -1,85 +1,56 @@
+import { useState, useEffect } from 'react';
 import { MDBContainer } from 'mdbreact';
-function OrganizationPage() {
-  const up = {
-    color: 'rgb(34, 34, 34)',
-    fontFamily:
-      'Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif',
-    fontWeight: '600',
-    fontSize: '16px',
-    lineHeight: '20px',
-    marginBottom: '4px',
-  };
+import { useParams } from 'react-router-dom';
+import BaseInfoList from '../components/BaseInfoList';
+import MapInfo from '../components/MapInfo';
+import Schedule from '../components/Schedule/Schedule';
+import ServicesInfo from '../components/ServicesInfo';
+import { fetchOneOrganization } from '../api/organizationAPI';
 
-  const down = {
-    color: 'rgb(113, 113, 113)',
-    fontFamily:
-      'Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif',
-    fontWeight: '400',
-    fontSize: '14px',
-    lineHeight: '20px',
-  };
+function OrganizationPage() {
+  const [organization, setOrganization] = useState({});
+  const { id } = useParams();
+  const listServices = ['Вид на город', 'Test'];
+
+  useEffect(() => {
+    fetchOneOrganization(id).then((data) =>
+      setOrganization({ ...data, ...data.info })
+    );
+  }, [id]);
 
   return (
     <MDBContainer>
-      <div
-        className="organization_page_wrapper"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          paddingTop: '2rem',
-        }}
-      ></div>
-      <h3>
-        <strong>
-          Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-        </strong>
-      </h3>
-      <hr />
-      <div className="organization_page__base_info">
-        <div style={{ display: 'flex', marginBottom: '24px' }}>
-          <div style={{ marginLeft: '16px' }}>
-            <div style={up}>Lorem ipsum lorem ipsum</div>
-            <div style={down}>
-              Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum.
+      <div className="organization_page_wrapper">
+        <h3>
+          <strong>{organization.name}</strong>
+        </h3>
+        <hr />
+        <div className="organization_page_base_info">
+          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div style={{ width: '75%' }}>
+              <BaseInfoList data={organization} />
+            </div>
+            <div style={{ width: '25%', marginTop: '1.25rem' }}>
+              <Schedule data={organization.schedule} />
             </div>
           </div>
         </div>
-      </div>
-      <hr />
-      <div className="organization_page__description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-      </div>
-      <hr />
-      <div className="organization_page__services">
-        <h5>
-          {' '}
-          <strong>Lorem ipsum</strong>
-        </h5>
-      </div>
-      <hr />
-      <div className="organization_page__maps">
-        <h5>
-          <strong>Lorem ipsum</strong>
-        </h5>
-        <div>map</div>
-        <h6>
-          <strong>Lorem ipsum</strong>
-        </h6>
-        <text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </text>
+        <hr />
+        <div className="organization_page__description">
+          {organization.description}
+        </div>
+        <hr />
+        <div className="organization_page__services">
+          <ServicesInfo services={listServices} />
+        </div>
+        <hr />
+        <div className="organization_page__maps">
+          <MapInfo address={organization.addres} />
+          <h6 style={{ padding: '1rem 0 1rem' }}>
+            <strong>Как добраться</strong>
+          </h6>
+          <div> {organization.route}</div>
+        </div>
       </div>
     </MDBContainer>
   );

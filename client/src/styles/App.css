@@ -43,3 +43,19 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.organization_page_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0 2rem;
+}
+
+.services_wrapper {
+  -webkit-box-pack: start;
+  -webkit-box-align: stretch;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: calc(100% + 16px);
+}

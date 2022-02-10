@@ -9,7 +9,11 @@ import {
   MDBCollapse,
   MDBContainer,
 } from 'mdbreact';
-import { START_PAGE_ROUTE, REESTR_ROUTE } from '../../utils/const';
+import {
+  START_PAGE_ROUTE,
+  REESTR_ROUTE,
+  SERVICE_ROUTE,
+} from '../../utils/const';
 import cl from './NavBar.module.css';
 
 //TO DO:
@@ -43,7 +47,10 @@ function NavBar() {
                 </Link>
               </MDBNavItem>
               <MDBNavItem>
-                <Link className="nav-link waves-effect waves-light" to="/">
+                <Link
+                  className="nav-link waves-effect waves-light"
+                  to={SERVICE_ROUTE}
+                >
                   Услуги
                 </Link>
               </MDBNavItem>

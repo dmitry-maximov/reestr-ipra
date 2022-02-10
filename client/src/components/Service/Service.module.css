@@ -1,0 +1,21 @@
+.service {
+  padding-left: 8px;
+  padding-right: 8px;
+  /* width: 50%; */
+}
+
+.service__block {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  padding-bottom: 10px;
+}
+
+.service__icon {
+  margin-right: 16px;
+  margin-left: 0;
+}
+
+.service__icon > i {
+  font-size: 1.5rem;
+}

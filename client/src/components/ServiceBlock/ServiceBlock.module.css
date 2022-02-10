@@ -1,0 +1,27 @@
+.service_block {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  box-shadow: 0 5px 11px 0 rgb(128 128 128 / 18%),
+    0 4px 15px 0 rgb(128 128 128 / 15%);
+  margin: 0.75rem;
+  flex: 1 1 auto;
+  width: 45%;
+}
+
+.service_block__header {
+  color: #fff;
+  padding: 0.75rem 1.25rem 0.5rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: #4f7ea3;
+  text-align: center;
+}
+
+.service_block__body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.5rem 1.25rem;
+  border-radius: 0;
+}

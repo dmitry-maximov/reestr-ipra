@@ -1,5 +1,3 @@
-import Service from './Service/Service';
-
 function ServicesInfo(props) {
   const { services } = props;
   const handleClickModal = (e) => {
@@ -16,7 +14,8 @@ function ServicesInfo(props) {
         <>
           <div className="services_wrapper">
             {services.map((item) => (
-              <Service name={item} />
+              // <Service name={item} />
+              <>TO DO</>
             ))}
           </div>
           <div

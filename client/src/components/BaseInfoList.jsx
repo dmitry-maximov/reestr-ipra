@@ -1,5 +1,6 @@
 import { ICONS } from '../utils/const';
 import BaseInfo from './BaseInfo/BaseInfo';
+import { formatDate } from '../utils/formatting';
 
 const BaseInfoList = (props) => {
   const INFO = props.data;
@@ -13,7 +14,7 @@ const BaseInfoList = (props) => {
       <BaseInfo
         icon={ICONS.date}
         caption={'Дата регистрации'}
-        description={INFO.registration}
+        description={formatDate(INFO.registration)}
       />
       <BaseInfo
         icon={ICONS.user_boss}

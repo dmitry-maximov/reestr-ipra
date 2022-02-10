@@ -25,29 +25,27 @@ function MapInfo(props) {
       <h5 style={{ paddingBottom: '1rem' }}>
         <strong>Где находится</strong>
       </h5>
-      <div style={{ width: '100%' }}>
-        <YMaps
-          query={{
-            apikey: process.env.REACT_APP_MAP_KEY,
-            lang: 'ru_RU',
-            load: 'package.full',
+      <YMaps
+        query={{
+          apikey: process.env.REACT_APP_MAP_KEY,
+          lang: 'ru_RU',
+          load: 'package.full',
+        }}
+      >
+        <Map
+          onLoad={(ymaps) => geocode(ymaps)}
+          width={'100%'}
+          height={'40vh'}
+          defaultState={{
+            center: [55.75, 37.57],
+            zoom: 9,
+            controls: ['zoomControl', 'fullscreenControl'],
           }}
+          instanceRef={(ref) => (myMap = ref)}
         >
-          <Map
-            onLoad={(ymaps) => geocode(ymaps)}
-            width={'100%'}
-            height={'40vh'}
-            defaultState={{
-              center: [55.75, 37.57],
-              zoom: 9,
-              controls: ['zoomControl', 'fullscreenControl'],
-            }}
-            instanceRef={(ref) => (myMap = ref)}
-          >
-            <Placemark geometry={location} options={pointOptions()} />
-          </Map>
-        </YMaps>
-      </div>
+          <Placemark geometry={location} options={pointOptions()} />
+        </Map>
+      </YMaps>
     </>
   );
 }

@@ -12,9 +12,15 @@ class OrganizationController {
       });
       if (info) {
         OrganizationInfo.create({
-          full_name: info.full_name,
           organizationId: createdOrganization.id,
           infoId: createdOrganization.id,
+          fullName: info.fullName,
+          description: info.description,
+          route: info.route,
+          schedule: info.schedule,
+          supervisor: info.supervisor,
+          email: info.email,
+          registration: info.registration,
         });
       }
 

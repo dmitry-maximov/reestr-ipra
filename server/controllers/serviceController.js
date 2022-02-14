@@ -1,5 +1,5 @@
-const ApiError = require("../handlers/apiError");
-const { Service } = require("../models/index");
+const ApiError = require('../handlers/apiError');
+const { Service, Organization } = require('../models/index');
 
 class ServiceController {
   async create(req, res, next) {
@@ -18,10 +18,9 @@ class ServiceController {
 
   async getAll(req, res) {
     let { limit, typeId } = req.query;
-    limit = limit || 9;
     let listServices;
 
-    if (typeId && limit > 0)
+    if (typeId && limit && limit > 0)
       listServices = await Service.findAndCountAll({
         where: { typeId },
         limit,
@@ -31,7 +30,18 @@ class ServiceController {
   }
 
   async getOne(req, res, next) {
-    //TO DO:
+    const { id } = req.params;
+    if (!id) {
+      return next(ApiError.badRequest('не передан параметр id'));
+    }
+    const currService = await Service.findOne({
+      where: { id },
+      include: [{ model: Organization, attributes: ['id', 'name'] }],
+    });
+    if (!currService) {
+      return next(ApiError.internalServer('услуга не найдена'));
+    }
+    return res.json(currService);
   }
 
   async delete(req, res, next) {

@@ -2,22 +2,21 @@ import { useState, useEffect } from 'react';
 import { fetchService } from '../../api/serviceAPI';
 import { useFetching } from '../../hooks/useFetching';
 import ButtonShadow from '../ButtonShadow/ButtonShadow';
-import Modal from '../Modal/Modal';
 import Service from '../Service/Service';
 import cl from './ServiceBlock.module.css';
 
-function ServiceBlock(props) {
-  const { type, name } = props;
+function ServiceBlock({ type, name, viewAllHandler, limit }) {
   const [services, setServices] = useState([]);
-  const [modal, setModal] = useState(false);
-  const [fetchServices, isLoading, isError] = useFetching(async (type) => {
-    const response = await fetchService(type);
-    const { rows } = response;
-    setServices(rows);
-  });
+  const [fetchServices, isLoading, isError] = useFetching(
+    async (type, limit) => {
+      const response = await fetchService(type, limit);
+      const { rows } = response;
+      setServices(rows);
+    }
+  );
 
   useEffect(() => {
-    fetchServices(type);
+    fetchServices(type, limit);
   }, []);
 
   return (
@@ -28,27 +27,34 @@ function ServiceBlock(props) {
         </h5>
       </div>
       <div className={cl.service_block__body}>
-        {services.length > 0 ? (
-          services.map((item) => <Service key={item.id} name={item.name} />)
-        ) : (
-          <h5 className="text-center pt-3">Нет данных</h5>
+        {isLoading && (
+          <h5 className="text-center pt-5">Идет загрузка данных</h5>
         )}
-      </div>
+        {!isLoading && isError && (
+          <h5 className="text-center pt-5">
+            Произошла ошибка при получении данных
+          </h5>
+        )}
 
-      <Modal visible={modal} setVisible={setModal}>
-        <>List all services</>
-      </Modal>
-      <div
-        style={{ display: 'flex', justifyContent: 'center', padding: '1rem' }}
-      >
-        <ButtonShadow
-          className="text-center"
-          style={{ fontWeight: '400' }}
-          onClick={(e) => setModal(true)}
-        >
-          Показать все
-        </ButtonShadow>
+        {!isError && !isLoading && services.length === 0 && (
+          <h5 className="text-center pt-5">Данные не найдены</h5>
+        )}
+
+        {services.map((item) => (
+          <Service key={item.id} name={item.name} id={item.id} />
+        ))}
       </div>
+      {viewAllHandler && (
+        <div className={cl.service_block__button_row}>
+          <ButtonShadow
+            className="text-center"
+            style={{ fontWeight: '400' }}
+            onClick={(e) => viewAllHandler(type, name)}
+          >
+            Показать все
+          </ButtonShadow>
+        </div>
+      )}
     </div>
   );
 }

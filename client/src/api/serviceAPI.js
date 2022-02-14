@@ -6,3 +6,8 @@ export const fetchService = async (typeId, limit = 10) => {
   });
   return data;
 };
+
+export const fetchOneService = async (id) => {
+  const { data } = await $host.get('api/service/' + id);
+  return data;
+};

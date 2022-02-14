@@ -1,7 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './components/AppRouter';
 import Lauot from './components/Lauot';
-import NavBar from './components/NavBar/NavBar';
 import './styles/App.css';
 
 function App() {

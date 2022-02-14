@@ -16,7 +16,7 @@ function ServicesInfo(props) {
         <>
           <div className="services_wrapper">
             {services.map((item) => (
-              <Service name={item} />
+              <Service key={item.id} name={item} id={item.id} />
             ))}
           </div>
           <div

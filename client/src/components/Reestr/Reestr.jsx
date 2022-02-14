@@ -34,7 +34,6 @@ function Reestr() {
     <div className="organizations-wrapper">
       {isLoading && (
         <div style={{ marginTop: 50 }}>
-          {' '}
           <h5 className="text-center">Идет загрузка данных</h5>
         </div>
       )}

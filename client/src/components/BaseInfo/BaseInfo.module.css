@@ -1,0 +1,31 @@
+.base_info_wrapper {
+  display: flex;
+  margin-bottom: 10px;
+}
+.base_info_icon {
+  padding: 0.25rem 0 0 0.5rem;
+}
+.base_info_icon > i {
+  font-size: 1.5rem;
+}
+
+.base_info_title {
+  margin-left: 16px;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    'Helvetica Neue', sans-serif;
+}
+
+.base_info_title__up {
+  color: rgb(34, 34, 34);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.base_info_title__down {
+  color: rgb(113, 113, 113);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}

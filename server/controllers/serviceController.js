@@ -1,13 +1,14 @@
-const ApiError = require('../handlers/apiError');
-const { Service } = require('../models/index');
+const ApiError = require("../handlers/apiError");
+const { Service } = require("../models/index");
 
 class ServiceController {
   async create(req, res, next) {
     try {
-      const { name, description } = req.body;
+      const { name, description, typeId } = req.body;
       const createdServices = await Service.create({
         name,
         description,
+        typeId,
       });
       return res.json(createdServices);
     } catch (err) {
@@ -16,12 +17,13 @@ class ServiceController {
   }
 
   async getAll(req, res) {
-    let { limit } = req.query;
+    let { limit, typeId } = req.query;
     limit = limit || 9;
     let listServices;
 
-    if (limit > 0)
+    if (typeId && limit > 0)
       listServices = await Service.findAndCountAll({
+        where: { typeId },
         limit,
       });
     else listServices = await Service.findAndCountAll();

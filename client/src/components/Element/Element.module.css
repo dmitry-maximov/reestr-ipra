@@ -1,0 +1,20 @@
+.element {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.element__block {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  padding-bottom: 10px;
+}
+
+.element__icon {
+  margin-right: 16px;
+  margin-left: 0;
+}
+
+.element__icon > i {
+  font-size: 1.5rem;
+}

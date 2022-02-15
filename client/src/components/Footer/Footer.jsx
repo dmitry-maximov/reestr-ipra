@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { MDBContainer, MDBFooter } from 'mdbreact';
-import { START_PAGE_ROUTE, REESTR_ROUTE } from '../../utils/const';
+import {
+  START_PAGE_ROUTE,
+  REESTR_ROUTE,
+  SERVICE_ROUTE,
+} from '../../utils/const';
 import cl from './Footer.module.css';
 
 function Footer() {
@@ -31,7 +35,7 @@ function Footer() {
             <Link to={REESTR_ROUTE}>Реестр</Link>
           </li>
           <li className="list-inline-item">
-            <Link to={START_PAGE_ROUTE}>Услуги</Link>
+            <Link to={SERVICE_ROUTE}>Услуги</Link>
           </li>
           <li className="list-inline-item">
             <Link to={START_PAGE_ROUTE}>Обратная связь</Link>

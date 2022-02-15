@@ -11,7 +11,6 @@ import { useFetching } from '../hooks/useFetching';
 function OrganizationPage() {
   const [organization, setOrganization] = useState({});
   const { id } = useParams();
-  const listServices = ['Вид на город', 'Test'];
 
   const [fetchOrg, isLoading, isError] = useFetching(async (id) => {
     const response = await fetchOneOrganization(id);
@@ -62,7 +61,7 @@ function OrganizationPage() {
           </div>
           <hr />
           <div className="organization_page__services">
-            <ServicesInfo services={listServices} />
+            <ServicesInfo services={organization.services} />
           </div>
           <hr />
           <div className="organization_page__maps">

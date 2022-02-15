@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { REESTR_ROUTE, SERVICE_ROUTE } from '../../utils/const';
 import cl from './Initial.module.css';
 
 const Initial = () => {
@@ -13,13 +14,13 @@ const Initial = () => {
         <div>
           <Link
             className="btn btn-indigo my-2 waves-effect waves-light"
-            to="/reestr"
+            to={REESTR_ROUTE}
           >
             к списку организаций
           </Link>
           <Link
             className="btn btn-secondary my-2 waves-effect waves-light"
-            to="/reestr"
+            to={SERVICE_ROUTE}
           >
             к списку слуг
           </Link>

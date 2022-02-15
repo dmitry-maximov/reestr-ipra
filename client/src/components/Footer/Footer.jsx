@@ -4,6 +4,7 @@ import {
   START_PAGE_ROUTE,
   REESTR_ROUTE,
   SERVICE_ROUTE,
+  FEEDBACK_ROUTE,
 } from '../../utils/const';
 import cl from './Footer.module.css';
 
@@ -38,7 +39,7 @@ function Footer() {
             <Link to={SERVICE_ROUTE}>Услуги</Link>
           </li>
           <li className="list-inline-item">
-            <Link to={START_PAGE_ROUTE}>Обратная связь</Link>
+            <Link to={FEEDBACK_ROUTE}>Обратная связь</Link>
           </li>
         </ul>
         <p className={cl.copyright}>

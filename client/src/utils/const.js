@@ -3,6 +3,7 @@ export const REESTR_ROUTE = '/reestr';
 export const ORGANIZATION_ROUTE = '/organization';
 export const SERVICE_ROUTE = '/service';
 export const SERVICE_ITEM_ROUTE = '/viewservice';
+export const FEEDBACK_ROUTE = '/feedback';
 export const ICONS = {
   full_caption: 'far fa-building',
   date: 'far fa-calendar-check',

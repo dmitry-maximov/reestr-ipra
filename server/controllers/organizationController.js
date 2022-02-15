@@ -1,5 +1,5 @@
 const ApiError = require('../handlers/apiError');
-const { Organization, OrganizationInfo } = require('../models/index');
+const { Organization, OrganizationInfo, Service } = require('../models/index');
 
 class OrganizationController {
   async create(req, res, next) {
@@ -52,7 +52,10 @@ class OrganizationController {
     }
     const currOrganization = await Organization.findOne({
       where: { id },
-      include: [{ model: OrganizationInfo, as: 'info' }],
+      include: [
+        { model: OrganizationInfo, as: 'info' },
+        { model: Service, attributes: ['id', 'name'] },
+      ],
     });
     if (!currOrganization) {
       return next(ApiError.internalServer('организация не найдена'));

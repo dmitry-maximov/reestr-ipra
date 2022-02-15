@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { fetchService } from '../../api/serviceAPI';
 import { useFetching } from '../../hooks/useFetching';
+import { SERVICE_ITEM_ROUTE } from '../../utils/const';
 import ButtonShadow from '../ButtonShadow/ButtonShadow';
-import Service from '../Service/Service';
+import Element from '../Element/Element';
 import cl from './ServiceBlock.module.css';
 
 function ServiceBlock({ type, name, viewAllHandler, limit }) {
@@ -41,7 +42,12 @@ function ServiceBlock({ type, name, viewAllHandler, limit }) {
         )}
 
         {services.map((item) => (
-          <Service key={item.id} name={item.name} id={item.id} />
+          <Element
+            key={item.id}
+            name={item.name}
+            id={item.id}
+            route={SERVICE_ITEM_ROUTE}
+          />
         ))}
       </div>
       {viewAllHandler && (

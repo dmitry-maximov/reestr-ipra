@@ -3,6 +3,8 @@ import { fetchOneService } from '../api/serviceAPI';
 import { useFetching } from '../hooks/useFetching';
 import { useParams } from 'react-router-dom';
 import { MDBContainer } from 'mdbreact';
+import Element from '../components/Element/Element';
+import { ORGANIZATION_ROUTE } from '../utils/const';
 
 function ServiceEtemPage() {
   const { id } = useParams();
@@ -39,12 +41,21 @@ function ServiceEtemPage() {
           </div>
           <hr />
           <div className="organization_page__services">
-            <ul>
+            <h5 style={{ paddingBottom: '1rem' }}>
+              <strong>Организации предоставляющие услугу</strong>
+            </h5>
+            <div className="services_wrapper">
               {serviceInfo.organizations &&
                 serviceInfo.organizations.map((item) => (
-                  <li key={item.id}>{item.name}</li>
+                  <Element
+                    key={item.id}
+                    name={item.name}
+                    id={item.id}
+                    width={'50%'}
+                    route={ORGANIZATION_ROUTE}
+                  />
                 ))}
-            </ul>
+            </div>
           </div>
         </div>
       )}

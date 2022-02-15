@@ -1,11 +1,7 @@
-import Service from './Service/Service';
+import Element from './Element/Element';
+import { SERVICE_ITEM_ROUTE } from '../utils/const';
 
-function ServicesInfo(props) {
-  const { services } = props;
-  const handleClickModal = (e) => {
-    e.preventDefault();
-    alert('Открыть модальное окно c услугами');
-  };
+function ServicesInfo({ services }) {
   return (
     <div>
       <h5 style={{ paddingBottom: '1rem' }}>
@@ -13,26 +9,17 @@ function ServicesInfo(props) {
       </h5>
 
       {services && services.length > 0 ? (
-        <>
-          <div className="services_wrapper">
-            {services.map((item) => (
-              <Service key={item.id} name={item} id={item.id} />
-            ))}
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              paddingTop: '1rem',
-            }}
-          >
-            <button
-              className="btn btn-indigo my-2 waves-effect waves-light"
-              onClick={(e) => handleClickModal(e)}
-            >
-              Показать все услуги
-            </button>
-          </div>
-        </>
+        <div className="services_wrapper">
+          {services.map((item) => (
+            <Element
+              key={item.id}
+              name={item.name}
+              id={item.id}
+              width={'50%'}
+              route={SERVICE_ITEM_ROUTE}
+            />
+          ))}
+        </div>
       ) : (
         <h6 className="text-center">
           <strong>Услуги не найдены</strong>

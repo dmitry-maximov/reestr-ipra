@@ -1,13 +1,12 @@
 import { MDBContainer } from 'mdbreact';
 import cl from '../Breadcrumb/Breadcrumb.module.css';
 
-//TO DO:
-function Breadcrumb() {
+function Breadcrumb({ title }) {
   return (
     <nav className={cl.breadcrump_wrapper}>
       <MDBContainer>
         <ol className={cl.breadcrump_list}>
-          <li>Реестр организаций</li>
+          <li>{title}</li>
         </ol>
       </MDBContainer>
     </nav>

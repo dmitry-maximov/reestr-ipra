@@ -18,7 +18,7 @@ const Pagination = ({ totalPages, page = 1, changePage }) => {
           <MDBPageItem onClick={() => changePage(1)}>
             <MDBPageNav aria-label="Previous">
               <span aria-hidden="true">
-                <i class="fas fa-angle-double-left"></i>
+                <i className="fas fa-angle-double-left"></i>
               </span>
             </MDBPageNav>
           </MDBPageItem>
@@ -38,7 +38,7 @@ const Pagination = ({ totalPages, page = 1, changePage }) => {
           >
             <MDBPageNav aria-label="Next">
               <span aria-hidden="true">
-                <i class="fas fa-angle-double-right"></i>
+                <i className="fas fa-angle-double-right"></i>
               </span>
             </MDBPageNav>
           </MDBPageItem>

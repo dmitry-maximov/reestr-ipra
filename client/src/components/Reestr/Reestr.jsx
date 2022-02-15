@@ -45,7 +45,7 @@ function Reestr() {
         <div className="organizations">
           <div className={cl.organizations__list}>
             {orgs.map((item) => (
-              <OrganizationItem item={item} />
+              <OrganizationItem key={item.id} item={item} />
             ))}
           </div>
           <div className={cl.organizations__navigation}>

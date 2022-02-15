@@ -16,7 +16,6 @@ import {
 } from '../../utils/const';
 import cl from './NavBar.module.css';
 
-//TO DO:
 function NavBar() {
   const [collapse, setCollapse] = useState(false);
   return (
@@ -30,7 +29,7 @@ function NavBar() {
 
           <MDBCollapse isOpen={collapse} navbar>
             <MDBNavbarNav left>
-              <MDBNavItem active>
+              <MDBNavItem>
                 <Link
                   className="nav-link waves-effect waves-light"
                   to={START_PAGE_ROUTE}
@@ -52,6 +51,14 @@ function NavBar() {
                   to={SERVICE_ROUTE}
                 >
                   Услуги
+                </Link>
+              </MDBNavItem>
+            </MDBNavbarNav>
+            <MDBNavbarNav right>
+              <MDBNavItem>
+                <Link className="nav-link waves-effect waves-light" to={'#'}>
+                  <i className="fas fa-user-tie"></i>
+                  <div className="d-none d-md-inline"> Войти</div>
                 </Link>
               </MDBNavItem>
             </MDBNavbarNav>

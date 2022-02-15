@@ -4,9 +4,9 @@ import { MDBContainer } from 'mdbreact';
 import ServiceBlock from '../components/ServiceBlock/ServiceBlock';
 import { fetchTypes } from '../api/typeAPI';
 import Modal from '../components/Modal/Modal';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 const services = {
-  paddingTop: '2rem',
   width: '100%',
   display: 'flex',
 };
@@ -40,6 +40,7 @@ function ServicePage() {
 
   return (
     <section className="wrapper">
+      <Breadcrumb title={'Список услуг'} />
       <MDBContainer>
         {isLoading && (
           <h5 className="text-center pt-5">Идет загрузка данных</h5>

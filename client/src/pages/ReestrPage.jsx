@@ -5,7 +5,7 @@ import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 const ReestrPage = () => {
   return (
     <section className="wrapper">
-      <Breadcrumb />
+      <Breadcrumb title={'Реестр организаций'} />
       <MDBContainer>
         <Reestr />
       </MDBContainer>

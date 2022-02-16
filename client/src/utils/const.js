@@ -10,4 +10,12 @@ export const ICONS = {
   map: 'fas fa-map-marker-alt',
   phone: 'fas fa-phone',
   email: 'fas fa-at',
+  element_icon: 'fas fa-caret-left',
+  left: 'fas fa-angle-double-left',
+  right: 'fas fa-angle-double-right',
+  address: 'fas fa-map-marker-alt',
+  github: 'fab fa-github',
+  facebook: 'fab fa-facebook-f',
+  twitter: 'fab fa-twitter',
+  google: 'fab fa-google',
 };

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { ICONS } from '../../utils/const';
 import cl from './Element.module.css';
 
 const Service = ({ id, name, route, width }) => {
@@ -9,7 +10,7 @@ const Service = ({ id, name, route, width }) => {
           <Link to={`${route}/${id}`}>{name}</Link>
         </div>
         <div className={cl.element__icon}>
-          <i className="fas fa-caret-left"></i>
+          <i className={ICONS.element_icon}></i>
         </div>
       </div>
     </div>

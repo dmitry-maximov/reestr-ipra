@@ -27,7 +27,7 @@ function NavBar() {
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={() => setCollapse(!collapse)} />
 
-          <MDBCollapse isOpen={collapse} navbar>
+          <MDBCollapse show={collapse} navbar>
             <MDBNavbarNav left>
               <MDBNavItem>
                 <Link
@@ -57,7 +57,6 @@ function NavBar() {
             <MDBNavbarNav right>
               <MDBNavItem>
                 <Link className="nav-link waves-effect waves-light" to={'#'}>
-                  <i className="fas fa-user-tie"></i>
                   <div className="d-none d-md-inline"> Войти</div>
                 </Link>
               </MDBNavItem>

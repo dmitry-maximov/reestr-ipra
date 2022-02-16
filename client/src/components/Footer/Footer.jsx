@@ -4,6 +4,7 @@ import {
   START_PAGE_ROUTE,
   REESTR_ROUTE,
   SERVICE_ROUTE,
+  ICONS,
 } from '../../utils/const';
 import cl from './Footer.module.css';
 
@@ -13,18 +14,18 @@ function Footer() {
       <MDBContainer className="text-center">
         <div className={cl.social}>
           <a href="#!">
-            <i className="fab fa-github"></i>
+            <i className={ICONS.github}></i>
           </a>
           <a href="#!">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-
-          <a href="#!">
-            <i className="fab fa-twitter"></i>
+            <i className={ICONS.facebook}></i>
           </a>
 
           <a href="#!">
-            <i className="fab fa-google"></i>
+            <i className={ICONS.twitter}></i>
+          </a>
+
+          <a href="#!">
+            <i className={ICONS.google}></i>
           </a>
         </div>
         <ul className={cl.footer__links}>

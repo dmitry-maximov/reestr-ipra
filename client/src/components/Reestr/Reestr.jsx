@@ -6,6 +6,8 @@ import Select from './Select';
 import { useFetching } from '../../hooks/useFetching';
 import { getPageCount } from '../../utils/pages';
 import cl from './Reestr.module.css';
+import Spinner from '../Spinner/Spinner';
+import Message from '../Message/Message';
 
 function Reestr() {
   const [orgs, setOrgs] = useState([]);
@@ -32,21 +34,18 @@ function Reestr() {
 
   return (
     <div className="organizations-wrapper">
-      {isLoading && (
-        <div style={{ marginTop: 50 }}>
-          <h5 className="text-center">Идет загрузка данных</h5>
-        </div>
-      )}
-      {isError && (
-        <h5 className="text-center">Произошла ошибка при получении данных</h5>
+      {isLoading && <Spinner />}
+      {!isLoading && isError && (
+        <Message title={'Произошла ошибка при получении данных'} />
       )}
 
-      {orgs && orgs.length > 0 ? (
+      {!isError && !isLoading && (
         <div className="organizations">
           <div className={cl.organizations__list}>
-            {orgs.map((item) => (
-              <OrganizationItem key={item.id} item={item} />
-            ))}
+            {orgs.length > 0 &&
+              orgs.map((item) => (
+                <OrganizationItem key={item.id} item={item} />
+              ))}
           </div>
           <div className={cl.organizations__navigation}>
             <Pagination
@@ -67,8 +66,6 @@ function Reestr() {
             />
           </div>
         </div>
-      ) : (
-        !isLoading && <h5 className="text-center">Организации не найдены</h5>
       )}
     </div>
   );

@@ -34,6 +34,13 @@ const OrganizationService = sequelize.define('organization_service', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 });
 
+const User = sequelize.define('user', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  email: { type: DataTypes.STRING, unique: true },
+  password: { type: DataTypes.STRING },
+  role: { type: DataTypes.STRING, defaultValue: 'ADMIN' }, //т к. лк пользователя нет считаем что войти может только админ
+});
+
 Organization.hasOne(OrganizationInfo, { as: 'info' });
 OrganizationInfo.belongsTo(Organization);
 
@@ -49,4 +56,5 @@ module.exports = {
   Service,
   Type,
   OrganizationService,
+  User,
 };

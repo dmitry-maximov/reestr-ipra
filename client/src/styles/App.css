@@ -59,3 +59,39 @@ main {
   flex-wrap: wrap;
   width: calc(100% + 16px);
 }
+
+/* -------------------- */
+
+.box-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  min-width: 25vw;
+  z-index: 100;
+  background: #fff;
+  margin: 5vw;
+  padding: 2rem 3rem;
+  box-shadow: 0 5px 11px 0 rgb(128 128 128 / 18%),
+    0 4px 15px 0 rgb(128 128 128 / 15%);
+}
+.box__logo {
+  display: flex;
+  justify-content: center;
+}
+
+.box__w-text {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.box__form .form-control {
+  margin-bottom: 1rem;
+}
+.box__footer {
+  margin-top: 1.5rem;
+  text-align: center;
+}

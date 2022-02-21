@@ -9,7 +9,9 @@ import {
   ORGANIZATION_ROUTE,
   SERVICE_ROUTE,
   SERVICE_ITEM_ROUTE,
+  AUTH_ROUTE,
 } from '../utils/const';
+import AuthPage from '../pages/AuthPage';
 
 export const publicRoutes = [
   {
@@ -35,6 +37,10 @@ export const publicRoutes = [
   {
     path: SERVICE_ITEM_ROUTE + '/:id',
     element: <ServiceItemPage />,
+  },
+  {
+    path: AUTH_ROUTE,
+    element: <AuthPage />,
   },
 ];
 

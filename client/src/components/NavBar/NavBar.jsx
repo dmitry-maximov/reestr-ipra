@@ -13,6 +13,7 @@ import {
   START_PAGE_ROUTE,
   REESTR_ROUTE,
   SERVICE_ROUTE,
+  AUTH_ROUTE,
 } from '../../utils/const';
 import cl from './NavBar.module.css';
 
@@ -56,7 +57,10 @@ function NavBar() {
             </MDBNavbarNav>
             <MDBNavbarNav right>
               <MDBNavItem>
-                <Link className="nav-link waves-effect waves-light" to={'#'}>
+                <Link
+                  className="nav-link waves-effect waves-light"
+                  to={AUTH_ROUTE}
+                >
                   <div className="d-none d-md-inline"> Войти</div>
                 </Link>
               </MDBNavItem>

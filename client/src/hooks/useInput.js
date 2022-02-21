@@ -24,8 +24,8 @@ const useValidation = (value, validations) => {
             : setIsMaxLenError(false);
           break;
         case 'regular':
-          let regular = validations[validation];
-          regular.test(String(value).toLowerCase)
+          const regular = validations[validation];
+          regular.test(String(value).toLowerCase())
             ? setIsRerularError(false)
             : setIsRerularError(true);
           break;
@@ -36,10 +36,8 @@ const useValidation = (value, validations) => {
   }, [value]);
 
   useEffect(() => {
-    if (isEmpty || isMinLenError || isMaxLenError || isRerularError)
-      setValid(false);
-    else setValid(true);
-  }, [isEmpty]);
+    setValid(!(isEmpty || isMinLenError || isMaxLenError || isRerularError));
+  }, [isEmpty, isMinLenError, isMaxLenError, isRerularError]);
 
   return {
     isEmpty,

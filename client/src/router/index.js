@@ -9,7 +9,8 @@ import {
   ORGANIZATION_ROUTE,
   SERVICE_ROUTE,
   SERVICE_ITEM_ROUTE,
-  AUTH_ROUTE,
+  LOGIN_ROUTE,
+  REGISTRATION_ROUTE,
 } from '../utils/const';
 import AuthPage from '../pages/AuthPage';
 
@@ -39,7 +40,12 @@ export const publicRoutes = [
     element: <ServiceItemPage />,
   },
   {
-    path: AUTH_ROUTE,
+    path: LOGIN_ROUTE,
+    element: <AuthPage />,
+  },
+
+  {
+    path: REGISTRATION_ROUTE,
     element: <AuthPage />,
   },
 ];

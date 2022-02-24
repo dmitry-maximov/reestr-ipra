@@ -7,6 +7,8 @@ import Schedule from '../components/Schedule/Schedule';
 import ServicesInfo from '../components/ServicesInfo';
 import { fetchOneOrganization } from '../api/organizationAPI';
 import { useFetching } from '../hooks/useFetching';
+import Spinner from '../components/Spinner/Spinner';
+import Message from '../components/Message/Message';
 
 function OrganizationPage() {
   const [organization, setOrganization] = useState({});
@@ -23,15 +25,9 @@ function OrganizationPage() {
 
   return (
     <MDBContainer>
-      {isLoading && (
-        <div style={{ marginTop: 50 }}>
-          <h5 className="text-center">Идет загрузка данных</h5>
-        </div>
-      )}
+      {isLoading && <Spinner />}
       {!isLoading && isError && (
-        <h5 className="text-center pt-5">
-          Произошла ошибка при получении данных
-        </h5>
+        <Message title={'Произошла ошибка при получении данных'} />
       )}
       {!isError && !isLoading && (
         <div className="organization_page_wrapper">
@@ -56,7 +52,7 @@ function OrganizationPage() {
             {organization.description ? (
               organization.description
             ) : (
-              <h5 className="text-center p-2">Нет информации</h5>
+              <Message title={'Нет данных'} />
             )}
           </div>
           <hr />
@@ -73,7 +69,7 @@ function OrganizationPage() {
               {organization.route ? (
                 organization.route
               ) : (
-                <h5 className="text-center">Нет информации</h5>
+                <Message title={'Нет данных'} />
               )}
             </div>
           </div>

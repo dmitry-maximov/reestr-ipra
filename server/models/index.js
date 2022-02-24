@@ -40,8 +40,13 @@ const Feedback = sequelize.define('feedback', {
   email: { type: DataTypes.STRING, unique: true },
   theme: { type: DataTypes.STRING },
   body: { type: DataTypes.TEXT },
+});
 
-  description: { type: DataTypes.TEXT },
+const User = sequelize.define('user', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  email: { type: DataTypes.STRING, unique: true },
+  password: { type: DataTypes.STRING },
+  role: { type: DataTypes.STRING, defaultValue: 'ADMIN' }, //т к. лк пользователя нет считаем что войти может только админ
 });
 
 Organization.hasOne(OrganizationInfo, { as: 'info' });
@@ -60,4 +65,5 @@ module.exports = {
   Type,
   OrganizationService,
   Feedback,
+  User,
 };

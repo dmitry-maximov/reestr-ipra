@@ -1,0 +1,25 @@
+.loader_wrapper {
+  position: absolute;
+  left: 50%;
+  width: 7rem;
+  height: 7rem;
+  z-index: 9;
+}
+.loader {
+  width: calc(100% - 0px);
+  height: calc(100% - 0px);
+  border-top: 10px solid #3f51b5;
+  border-radius: 50%;
+  animation: rotate 5s linear infinite;
+}
+
+.loader_wrapper > p {
+  color: #3f51b5;
+  font-weight: 400;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -4,9 +4,11 @@ import { MDBContainer } from 'mdbreact';
 import ServiceBlock from '../components/ServiceBlock/ServiceBlock';
 import { fetchTypes } from '../api/typeAPI';
 import Modal from '../components/Modal/Modal';
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
+import Spinner from '../components/Spinner/Spinner';
+import Message from '../components/Message/Message';
 
 const services = {
-  paddingTop: '2rem',
   width: '100%',
   display: 'flex',
 };
@@ -40,18 +42,15 @@ function ServicePage() {
 
   return (
     <section className="wrapper">
+      <Breadcrumb title={'Список услуг'} />
       <MDBContainer>
-        {isLoading && (
-          <h5 className="text-center pt-5">Идет загрузка данных</h5>
-        )}
+        {isLoading && <Spinner />}
         {!isLoading && isError && (
-          <h5 className="text-center pt-5">
-            Произошла ошибка при получении данных
-          </h5>
+          <Message title={'Произошла ошибка при получении данных'} />
         )}
 
         {!isError && !isLoading && types.length === 0 && (
-          <h5 className="text-center pt-5">Услуги не найдены</h5>
+          <Message title={'Услуги не найдены</h5'} />
         )}
 
         {!isError && !isLoading && (

@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { MDBContainer } from 'mdbreact';
 import Element from '../components/Element/Element';
 import { ORGANIZATION_ROUTE } from '../utils/const';
+import Spinner from '../components/Spinner/Spinner';
+import Message from '../components/Message/Message';
 
 function ServiceEtemPage() {
   const { id } = useParams();
@@ -20,15 +22,9 @@ function ServiceEtemPage() {
   }, []);
   return (
     <MDBContainer>
-      {isLoading && (
-        <div style={{ marginTop: 50 }}>
-          <h5 className="text-center">Идет загрузка данных</h5>
-        </div>
-      )}
+      {isLoading && <Spinner />}
       {!isLoading && isError && (
-        <h5 className="text-center pt-5">
-          Произошла ошибка при получении данных
-        </h5>
+        <Message title={'Произошла ошибка при получении данных'} />
       )}
       {!isError && !isLoading && (
         <div className="organization_page_wrapper">
@@ -44,8 +40,13 @@ function ServiceEtemPage() {
             <h5 style={{ paddingBottom: '1rem' }}>
               <strong>Организации предоставляющие услугу</strong>
             </h5>
+            {(!serviceInfo.organizations ||
+              serviceInfo.organizations.length === 0) && (
+              <Message title={'Организации не найдены'} />
+            )}
             <div className="services_wrapper">
               {serviceInfo.organizations &&
+                serviceInfo.organizations.length > 0 &&
                 serviceInfo.organizations.map((item) => (
                   <Element
                     key={item.id}

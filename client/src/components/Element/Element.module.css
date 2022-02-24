@@ -10,6 +10,10 @@
   padding-bottom: 10px;
 }
 
+.element__block > div > a {
+  color: #747373;
+}
+
 .element__icon {
   margin-right: 16px;
   margin-left: 0;

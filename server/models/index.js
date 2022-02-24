@@ -34,6 +34,16 @@ const OrganizationService = sequelize.define('organization_service', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 });
 
+const Feedback = sequelize.define('feedback', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING, unique: false },
+  email: { type: DataTypes.STRING, unique: true },
+  theme: { type: DataTypes.STRING },
+  body: { type: DataTypes.TEXT },
+
+  description: { type: DataTypes.TEXT },
+});
+
 Organization.hasOne(OrganizationInfo, { as: 'info' });
 OrganizationInfo.belongsTo(Organization);
 
@@ -49,4 +59,5 @@ module.exports = {
   Service,
   Type,
   OrganizationService,
+  Feedback,
 };

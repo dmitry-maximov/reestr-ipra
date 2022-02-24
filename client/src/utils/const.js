@@ -6,6 +6,7 @@ export const SERVICE_ITEM_ROUTE = '/viewservice';
 export const FEEDBACK_ROUTE = '/feedback';
 export const LOGIN_ROUTE = '/login';
 export const REGISTRATION_ROUTE = '/registration';
+export const ADMIN_ROUTE = '/admin';
 export const ICONS = {
   full_caption: 'far fa-building',
   date: 'far fa-calendar-check',

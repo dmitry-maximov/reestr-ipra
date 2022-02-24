@@ -1,0 +1,19 @@
+.sidebar {
+  background: #2043b6;
+  grid-area: sidebar;
+  overflow-y: auto;
+  padding: 20px 0px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  height: inherit;
+  width: 288px;
+}
+
+.sidebar__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: var(--border-width) solid var(--menu-border);
+  margin-bottom: 26px;
+  color: #fff;
+}

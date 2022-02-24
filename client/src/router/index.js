@@ -12,9 +12,11 @@ import {
   LOGIN_ROUTE,
   REGISTRATION_ROUTE,
   FEEDBACK_ROUTE,
+  ADMIN_ROUTE,
 } from '../utils/const';
 import AuthPage from '../pages/AuthPage';
 import FeedbackPage from '../pages/FeedbackPage';
+import AdminPage from '../pages/AdminPage';
 
 export const publicRoutes = [
   {
@@ -57,4 +59,9 @@ export const publicRoutes = [
 ];
 
 // TO DO: список страниц доступных только вошедшим пользователям
-export const privateRoutes = [];
+export const privateRoutes = [
+  {
+    path: ADMIN_ROUTE,
+    element: <AdminPage />,
+  },
+];

@@ -1,7 +1,7 @@
 import Footer from './Footer/Footer';
 import NavBar from './NavBar/NavBar';
 
-function Lauot(props) {
+function Layout(props) {
   return (
     <>
       <NavBar />
@@ -11,4 +11,4 @@ function Lauot(props) {
   );
 }
 
-export default Lauot;
+export default Layout;

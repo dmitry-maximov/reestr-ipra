@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useInput from '../hooks/useInput';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
+import { ADMIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
 import { loginUser, registration } from '../api/userAPI';
 import { MDBInput } from 'mdbreact';
 import { AuthContext } from '../context';
@@ -23,7 +23,7 @@ function AuthPage() {
       if (isLogin) {
         data = await loginUser(login.value, password.value);
         setIsAuth(true);
-        history('/');
+        history(ADMIN_ROUTE);
       } else {
         data = await registration(login.value, password.value);
         history(LOGIN_ROUTE);

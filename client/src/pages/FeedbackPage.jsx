@@ -37,7 +37,6 @@ function FeedbackPage() {
                 setSubmitting(false);
                 if (data)
                   alert(`Ваше сообщение добавлено. Спасибо за обращение. `);
-                values = { name: '', email: '', theme: '', body: '' };
               } catch {
                 alert(
                   'При отправке сообщения возникли проблемы, повторите отправку позже'

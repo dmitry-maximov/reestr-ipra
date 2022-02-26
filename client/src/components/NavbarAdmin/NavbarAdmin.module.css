@@ -1,0 +1,16 @@
+.nav_bar_admin {
+  padding: 0px 64px;
+  background: #fff;
+  border-bottom: 1px solid #ecf0f8;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav_bar_admin > h5 {
+  padding: 1rem 0.5rem 0.5rem;
+  color: #2043b6;
+}
+
+.nav_bar_admin__btn {
+  padding: 0.65rem 0.5rem 0rem;
+}

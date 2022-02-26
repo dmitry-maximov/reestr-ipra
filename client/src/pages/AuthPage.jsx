@@ -37,9 +37,9 @@ function AuthPage() {
 
   return (
     <section className="wrapper">
-      <div className="box-container">
-        <div className="box">
-          <h5 className="box__w-text">
+      <div className="auth-container">
+        <div className="auth-row">
+          <h5 className="auth__text">
             {isLogin ? 'Авторизация' : 'Регистрация'}
           </h5>
           <div className="box__form">

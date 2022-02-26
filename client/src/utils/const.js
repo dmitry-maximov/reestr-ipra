@@ -7,6 +7,7 @@ export const FEEDBACK_ROUTE = '/feedback';
 export const LOGIN_ROUTE = '/login';
 export const REGISTRATION_ROUTE = '/registration';
 export const ADMIN_ROUTE = '/admin';
+export const ADMIN_ROUTE_ORG = '/admin/organization';
 export const ICONS = {
   full_caption: 'far fa-building',
   date: 'far fa-calendar-check',
@@ -22,4 +23,6 @@ export const ICONS = {
   facebook: 'fab fa-facebook-f',
   twitter: 'fab fa-twitter',
   google: 'fab fa-google',
+  plus: 'fas fa-plus',
+  spread: 'fas fa-ellipsis-h',
 };

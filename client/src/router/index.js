@@ -13,10 +13,12 @@ import {
   REGISTRATION_ROUTE,
   FEEDBACK_ROUTE,
   ADMIN_ROUTE,
+  ADMIN_ROUTE_ORG,
 } from '../utils/const';
 import AuthPage from '../pages/AuthPage';
 import FeedbackPage from '../pages/FeedbackPage';
 import AdminPage from '../pages/AdminPage';
+import ReestrAdmin from '../components/ReestrAdmin/ReestrAdmin';
 
 export const publicRoutes = [
   {
@@ -63,5 +65,9 @@ export const privateRoutes = [
   {
     path: ADMIN_ROUTE,
     element: <AdminPage />,
+  },
+  {
+    path: ADMIN_ROUTE_ORG,
+    element: <ReestrAdmin />,
   },
 ];

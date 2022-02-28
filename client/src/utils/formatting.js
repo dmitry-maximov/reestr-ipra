@@ -11,3 +11,7 @@ export const formatDate = (date) => {
 
   return dd + '.' + mm + '.' + yy;
 };
+
+export const formatDateWithOutTimeZone = (date) => {
+  return date.split('T')[0];
+};

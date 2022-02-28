@@ -19,8 +19,8 @@ import {
 import AuthPage from '../pages/AuthPage';
 import FeedbackPage from '../pages/FeedbackPage';
 import AdminPage from '../pages/AdminPage';
-import ReestrAdmin from '../components/ReestrAdmin/ReestrAdmin';
-import Neworganization from '../components/NewOrganization/Neworganization';
+import ReestrAdmin from '../components/Admin/ReestrAdmin/ReestrAdmin';
+import Changeorganization from '../components/Admin/ChangeOrganization/Changeorganization';
 
 export const publicRoutes = [
   {
@@ -65,11 +65,11 @@ export const privateRoutes = [
     element: <AdminPage />,
   },
   {
-    path: ADMIN_ROUTE_ORG,
-    element: <ReestrAdmin />,
+    path: ADMIN_ROUTE_NEW_ORG,
+    element: <Changeorganization />,
   },
   {
-    path: ADMIN_ROUTE_NEW_ORG,
-    element: <Neworganization />,
+    path: ADMIN_ROUTE_ORG + '/:id',
+    element: <Changeorganization />,
   },
 ];

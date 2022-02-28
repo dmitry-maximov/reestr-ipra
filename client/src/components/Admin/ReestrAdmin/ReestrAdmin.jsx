@@ -1,35 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import Box from '../Box/Box';
+import Box from '../../Box/Box';
 import {
   fetchOrganizations,
   removeOrganization,
-} from '../../api/organizationAPI';
-import { useFetching } from '../../hooks/useFetching';
+} from '../../../api/organizationAPI';
 import { useNavigate } from 'react-router-dom';
-import OrganizationItem from '../OrganizationItem/OrganizationItem';
-import { ADMIN_ROUTE_NEW_ORG } from '../../utils/const';
+import OrganizationItem from '../../OrganizationItem/OrganizationItem';
+import { ADMIN_ROUTE_NEW_ORG, ADMIN_ROUTE_ORG } from '../../../utils/const';
 
 const ReestrAdmin = (props) => {
   const [orgs, setOrgs] = useState([]);
   const history = useNavigate();
 
-  const [fetchOrgs, isLoading, isError] = useFetching(async (page, limit) => {
-    const response = await fetchOrganizations(page, limit);
-    const { rows } = response;
-    setOrgs(rows);
-  });
-
   useEffect(() => {
-    fetchOrgs();
+    fetchOrganizations().then((data) => setOrgs(data.rows));
   }, []);
 
   const createHandler = () => {
     history(ADMIN_ROUTE_NEW_ORG);
   };
 
-  const changeHandler = (e) => {
+  const changeHandler = (e, id) => {
     e.stopPropagation();
-    alert('TO DO: change org');
+    history(ADMIN_ROUTE_ORG + `/${id}`);
   };
 
   const removeHandler = (e, id) => {
@@ -48,7 +41,7 @@ const ReestrAdmin = (props) => {
   };
 
   return (
-    <div className="p-3 w-100">
+    <div style={{ padding: '.5rem .5rem 0 .5rem' }}>
       <Box
         title={'Организации'}
         isAddButton={true}

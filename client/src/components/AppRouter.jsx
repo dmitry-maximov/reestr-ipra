@@ -4,7 +4,7 @@ import { publicRoutes, privateRoutes } from '../router/index';
 import { START_PAGE_ROUTE } from '../utils/const';
 import { AuthContext } from '../context';
 import Layout from './Layout';
-import LayoutAdmin from './LayoutAdmin/LayoutAdmin';
+import LayoutAdmin from './Admin/LayoutAdmin/LayoutAdmin';
 
 const AppRouter = () => {
   const { isAuth } = useContext(AuthContext);

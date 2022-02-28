@@ -1,5 +1,5 @@
+import NavbarAdmin from '../../NavbarAdmin/NavbarAdmin';
 import Sidebar from '../Sidebar/Sidebar';
-import NavbarAdmin from '../NavbarAdmin/NavbarAdmin';
 import cl from './LayoutAdmin.module.css';
 
 function LayoutAdmin(props) {

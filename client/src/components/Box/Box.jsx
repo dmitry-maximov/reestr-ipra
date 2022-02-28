@@ -18,12 +18,12 @@ const Box = ({
 
         {isAddButton && (
           <ButtonShadow onClick={AddButtonHandler}>
-            <i class={ICONS.plus}></i>
+            <i className={ICONS.plus}></i>
           </ButtonShadow>
         )}
         {isBackButton && (
           <ButtonShadow onClick={BackButtonHandler}>
-            <i class={ICONS.back}></i>
+            <i className={ICONS.back}></i>
           </ButtonShadow>
         )}
       </div>

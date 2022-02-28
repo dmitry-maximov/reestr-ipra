@@ -26,7 +26,7 @@ function OrganizationItem(props) {
             {isChange && (
               <ButtonShadow
                 style={{ border: 'none' }}
-                onClick={(e) => changeHandler(e)}
+                onClick={(e) => changeHandler(e, item.id)}
               >
                 <i className={ICONS.change}></i>
               </ButtonShadow>

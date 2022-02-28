@@ -14,11 +14,13 @@ import {
   FEEDBACK_ROUTE,
   ADMIN_ROUTE,
   ADMIN_ROUTE_ORG,
+  ADMIN_ROUTE_NEW_ORG,
 } from '../utils/const';
 import AuthPage from '../pages/AuthPage';
 import FeedbackPage from '../pages/FeedbackPage';
 import AdminPage from '../pages/AdminPage';
 import ReestrAdmin from '../components/ReestrAdmin/ReestrAdmin';
+import Neworganization from '../components/NewOrganization/Neworganization';
 
 export const publicRoutes = [
   {
@@ -28,10 +30,6 @@ export const publicRoutes = [
   {
     path: REESTR_ROUTE,
     element: <Reestr />,
-  },
-  {
-    path: ORGANIZATION_ROUTE + '/:id',
-    element: <OrganizationPage />,
   },
   {
     path: ORGANIZATION_ROUTE + '/:id',
@@ -69,5 +67,9 @@ export const privateRoutes = [
   {
     path: ADMIN_ROUTE_ORG,
     element: <ReestrAdmin />,
+  },
+  {
+    path: ADMIN_ROUTE_NEW_ORG,
+    element: <Neworganization />,
   },
 ];

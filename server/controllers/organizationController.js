@@ -1,5 +1,5 @@
-const ApiError = require('../handlers/apiError');
-const { Organization, OrganizationInfo, Service } = require('../models/index');
+const ApiError = require("../handlers/apiError");
+const { Organization, OrganizationInfo, Service } = require("../models/index");
 
 class OrganizationController {
   async create(req, res, next) {
@@ -48,17 +48,17 @@ class OrganizationController {
   async getOne(req, res, next) {
     const { id } = req.params;
     if (!id) {
-      return next(ApiError.badRequest('не передан параметр id'));
+      return next(ApiError.badRequest("не передан параметр id"));
     }
     const currOrganization = await Organization.findOne({
       where: { id },
       include: [
-        { model: OrganizationInfo, as: 'info' },
-        { model: Service, attributes: ['id', 'name'] },
+        { model: OrganizationInfo, as: "info" },
+        { model: Service, attributes: ["id", "name"] },
       ],
     });
     if (!currOrganization) {
-      return next(ApiError.internalServer('организация не найдена'));
+      return next(ApiError.internalServer("организация не найдена"));
     }
     return res.json(currOrganization);
   }
@@ -66,7 +66,7 @@ class OrganizationController {
   async delete(req, res) {
     const { id } = req.params;
     if (!id) {
-      return next(ApiError.badRequest('не передан параметр id'));
+      return next(ApiError.badRequest("не передан параметр id"));
     }
     try {
       const currOrganization = await Organization.destroy({ where: { id } });
@@ -83,12 +83,12 @@ class OrganizationController {
     const { id } = req.params;
 
     if (!id) {
-      return next(ApiError.badRequest('не передан параметр id'));
+      return next(ApiError.badRequest("не передан параметр id"));
     }
 
     const currOrganization = await Organization.findOne({ where: { id } });
     if (!currOrganization) {
-      return next(ApiError.internalServer('организация не найдена'));
+      return next(ApiError.internalServer("организация не найдена"));
     }
 
     const { name } = req.body;

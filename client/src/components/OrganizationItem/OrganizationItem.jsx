@@ -5,13 +5,14 @@ import ButtonShadow from '../ButtonShadow/ButtonShadow';
 import cl from './OrganizationItem.module.css';
 
 function OrganizationItem(props) {
-  const { item, isChange } = props;
+  const { item, isChange, changeHandler, isRemove, removeHandler } = props;
   const history = useNavigate();
 
   const handleClick = (e) => {
     e.preventDefault();
     history(ORGANIZATION_ROUTE + `/${item.id}`);
   };
+
   return (
     <div
       className={cl.organization_container}
@@ -23,8 +24,19 @@ function OrganizationItem(props) {
           <h5 className={cl.organization__header}>{item.name}</h5>
           <div className={cl.organization_change}>
             {isChange && (
-              <ButtonShadow style={{ border: 'none' }}>
-                <i className={ICONS.spread}></i>
+              <ButtonShadow
+                style={{ border: 'none' }}
+                onClick={(e) => changeHandler(e)}
+              >
+                <i className={ICONS.change}></i>
+              </ButtonShadow>
+            )}
+            {isRemove && (
+              <ButtonShadow
+                style={{ border: 'none' }}
+                onClick={(e) => removeHandler(e, item.id)}
+              >
+                <i className={ICONS.remove}></i>
               </ButtonShadow>
             )}
           </div>

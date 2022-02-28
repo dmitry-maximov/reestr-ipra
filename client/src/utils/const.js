@@ -8,6 +8,7 @@ export const LOGIN_ROUTE = '/login';
 export const REGISTRATION_ROUTE = '/registration';
 export const ADMIN_ROUTE = '/admin';
 export const ADMIN_ROUTE_ORG = '/admin/organization';
+export const ADMIN_ROUTE_NEW_ORG = '/admin/organization/new';
 export const ICONS = {
   full_caption: 'far fa-building',
   date: 'far fa-calendar-check',
@@ -25,4 +26,7 @@ export const ICONS = {
   google: 'fab fa-google',
   plus: 'fas fa-plus',
   spread: 'fas fa-ellipsis-h',
+  back: 'fas fa-chevron-left',
+  change: 'fas fa-pen',
+  remove: 'fas fa-trash',
 };

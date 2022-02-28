@@ -9,6 +9,9 @@ export const REGISTRATION_ROUTE = '/registration';
 export const ADMIN_ROUTE = '/admin';
 export const ADMIN_ROUTE_ORG = '/admin/organization';
 export const ADMIN_ROUTE_NEW_ORG = '/admin/organization/new';
+export const ADMIN_ROUTE_USERS = '/admin/users';
+export const ADMIN_ROUTE_APPEALS = '/admin/appeals';
+export const ADMIN_ROUTE_SERVICES = '/admin/services';
 export const ICONS = {
   full_caption: 'far fa-building',
   date: 'far fa-calendar-check',

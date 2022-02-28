@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom';
-import { START_PAGE_ROUTE, ADMIN_ROUTE } from '../../../utils/const';
+import {
+  START_PAGE_ROUTE,
+  ADMIN_ROUTE,
+  ADMIN_ROUTE_SERVICES,
+  ADMIN_ROUTE_USERS,
+  ADMIN_ROUTE_APPEALS,
+} from '../../../utils/const';
 import cl from './Sidebar.module.css';
 
 function Sidebar() {
@@ -20,17 +26,17 @@ function Sidebar() {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to={ADMIN_ROUTE_SERVICES}>
               Категории и Услуги
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to={ADMIN_ROUTE_USERS}>
               Пользователи
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to={ADMIN_ROUTE_APPEALS}>
               Обращения
             </Link>
           </li>

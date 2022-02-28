@@ -2,7 +2,7 @@ import ReestrAdmin from '../components/Admin/ReestrAdmin/ReestrAdmin';
 
 function AdminPage() {
   return (
-    //TO DO:
+    //TO DO: grafics
     <ReestrAdmin />
   );
 }

@@ -15,12 +15,17 @@ import {
   ADMIN_ROUTE,
   ADMIN_ROUTE_ORG,
   ADMIN_ROUTE_NEW_ORG,
+  ADMIN_ROUTE_USERS,
+  ADMIN_ROUTE_APPEALS,
+  ADMIN_ROUTE_SERVICES,
 } from '../utils/const';
 import AuthPage from '../pages/AuthPage';
 import FeedbackPage from '../pages/FeedbackPage';
 import AdminPage from '../pages/AdminPage';
-import ReestrAdmin from '../components/Admin/ReestrAdmin/ReestrAdmin';
 import Changeorganization from '../components/Admin/ChangeOrganization/Changeorganization';
+import UsersAdminPage from '../pages/UsersAdminPage';
+import ServicesAdminPage from '../pages/ServicesAdminPage';
+import AppealsAdminPage from '../pages/AppealsAdminPage';
 
 export const publicRoutes = [
   {
@@ -58,7 +63,6 @@ export const publicRoutes = [
   },
 ];
 
-// TO DO: список страниц доступных только вошедшим пользователям
 export const privateRoutes = [
   {
     path: ADMIN_ROUTE,
@@ -71,5 +75,17 @@ export const privateRoutes = [
   {
     path: ADMIN_ROUTE_ORG + '/:id',
     element: <Changeorganization />,
+  },
+  {
+    path: ADMIN_ROUTE_USERS,
+    element: <UsersAdminPage />,
+  },
+  {
+    path: ADMIN_ROUTE_SERVICES,
+    element: <ServicesAdminPage />,
+  },
+  {
+    path: ADMIN_ROUTE_APPEALS,
+    element: <AppealsAdminPage />,
   },
 ];

@@ -9,7 +9,7 @@
 }
 
 .appeals_view_item_avatar {
-  flex: 0 0 auto;
+  flex: 1 0 10%;
   text-align: center;
 }
 
@@ -46,7 +46,6 @@
   font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 0px;
-  width: max-content;
   word-wrap: break-word;
 }
 

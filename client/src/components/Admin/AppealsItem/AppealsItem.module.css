@@ -3,12 +3,12 @@
   position: relative;
 }
 
-.appeals_item::before {
+.active::before {
   content: '';
   width: 4px;
   height: 90%;
   background: #388e3c;
-  right: 0;
+  left: -1rem;
   top: 0;
   position: absolute;
 }
@@ -26,8 +26,7 @@
   display: block;
   text-align: center;
   text-decoration: none;
-  border-radius: 1em;
-  padding: 1px 0 0 0;
+  border-radius: 3rem;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%),
     0 1px 5px 0 rgb(0 0 0 / 20%);
   border: 2px solid #fff;
@@ -42,7 +41,7 @@
 
 .appeals_item_content {
   position: relative;
-  padding: 0.5rem 0 1rem 3rem;
+  padding: 0.5rem 0 0 3rem;
 }
 
 .appeals_item_content::before {

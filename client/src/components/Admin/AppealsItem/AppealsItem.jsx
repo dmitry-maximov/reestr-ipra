@@ -1,9 +1,12 @@
 import { formatDate } from '../../../utils/formatting';
 import cl from './AppealsItem.module.css';
 
-function AppealsItem({ item, handleClick }) {
+function AppealsItem({ item, handleClick, active }) {
   return (
-    <div className={cl.appeals_item} onClick={(e) => handleClick(e, item)}>
+    <div
+      className={`${cl.appeals_item} ${active && cl.active}`}
+      onClick={(e) => handleClick(e, item)}
+    >
       <div className={cl.appeals_item_header}>
         <div className={cl.appeals_item_header__icon}>
           <i className="far fa-envelope"></i>
@@ -12,7 +15,13 @@ function AppealsItem({ item, handleClick }) {
       </div>
       <div className={cl.appeals_item_content}>
         <div className={cl.appeals_item_content__text}>{item.body}</div>
-        <div class="info d-flex justify-content-between">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '2rem 0rem .5rem',
+          }}
+        >
           <div className={cl.appeals_item_content__text}>
             {item.name + `(${item.email})`}
           </div>

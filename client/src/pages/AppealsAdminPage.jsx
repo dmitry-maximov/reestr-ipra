@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchFeedback } from '../api/feedbackAPI';
+import { fetchFeedback, removeFeedback } from '../api/feedbackAPI';
 import AppealsItem from '../components/Admin/AppealsItem/AppealsItem';
 import AppealsItemView from '../components/Admin/AppealsItemView/AppealsItemView';
 import Box from '../components/Box/Box';
@@ -23,7 +23,7 @@ function AppealsAdminPage() {
     let isRemove = window.confirm('Действительно удалить выбранную запись ?');
     try {
       if (isRemove) {
-        //removeAppeal(id);
+        removeFeedback(id);
         setAppeals(appeals.filter((item) => item.id !== id));
         setActiveAppeal(null);
       }
@@ -44,13 +44,18 @@ function AppealsAdminPage() {
       <Box style={{ flexBasis: '40%' }} title={'Обращения'}>
         {appeals ? (
           appeals.map((item) => (
-            <AppealsItem item={item} handleClick={handleClick} />
+            <AppealsItem
+              key={item.id}
+              item={item}
+              handleClick={handleClick}
+              active={item.id == (activeAppeal && activeAppeal.id)}
+            />
           ))
         ) : (
           <Message title={'Нет обращений'} />
         )}
       </Box>
-      <Box title={'Текущее обращение'}>
+      <Box style={{ flexBasis: '60%' }} title={'Текущее обращение'}>
         {activeAppeal ? (
           <AppealsItemView view={activeAppeal} removeHandler={removeHandler} />
         ) : (

@@ -2,8 +2,9 @@
   width: 100%;
   border: 1px solid #ecf0f8;
   background-color: #ffffff;
-  min-height: 30em;
+  height: 90vh;
   margin: 0.5rem;
+  overflow-y: auto;
 }
 
 .box_header {

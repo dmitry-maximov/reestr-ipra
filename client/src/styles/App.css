@@ -102,3 +102,13 @@ main {
   display: flex;
   justify-content: space-between;
 }
+
+.users-container {
+  -webkit-box-pack: start;
+  -webkit-box-align: stretch;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: calc(100% + 16px);
+}

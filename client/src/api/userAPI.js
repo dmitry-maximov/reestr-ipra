@@ -16,3 +16,13 @@ export const loginUser = async (email, password) => {
   localStorage.setItem('token', data.token);
   return jwt_decode(data.token);
 };
+
+export const fetchUsers = async () => {
+  const { data } = await $host.get('api/auth');
+  return data;
+};
+
+export const removeUser = async (id) => {
+  const { data } = await $host.delete('api/auth/' + id);
+  return data;
+};

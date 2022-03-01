@@ -33,7 +33,6 @@ class UserController {
 
   async login(req, res, next) {
     const { email, password } = req.body;
-    debugger;
     const user = await User.findOne({ where: { email } });
     if (!user) {
       return next(ApiError.badRequest('Пользователь не найден'));
@@ -44,6 +43,26 @@ class UserController {
     }
     const token = generateJwt(user.id, user.email, user.role);
     return res.json({ token });
+  }
+
+  async getAll(req, res, next) {
+    const listUser = await User.findAll({
+      attributes: ['id', 'email', 'role'],
+    });
+    return res.json(listUser);
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+    if (!id) {
+      return next(ApiError.badRequest('не передан параметр id'));
+    }
+    try {
+      const removeUser = await User.destroy({ where: { id } });
+      return res.json(removeUser);
+    } catch (err) {
+      return next(ApiError.badRequest(err));
+    }
   }
 }
 

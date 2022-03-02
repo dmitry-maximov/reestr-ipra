@@ -1,23 +1,13 @@
-import Box from '../components/Box/Box';
+import Category from '../components/Admin/Category';
+import Services from '../components/Admin/Services';
 
 function ServicesAdminPage() {
-  const createHandler = (e) => {
-    e.preventDefault();
-  };
-
   return (
-    //TO DO:
-    <div style={{ display: 'flex', padding: '.5rem .5rem 0 .5rem' }}>
-      <Box
-        title={'Категории'}
-        isAddButton={true}
-        AddButtonHandler={createHandler}
-      ></Box>
-      <Box
-        title={'Услуги'}
-        isAddButton={true}
-        AddButtonHandler={createHandler}
-      ></Box>
+    <div
+      style={{ display: 'flex', width: '100%', padding: '.5rem .5rem 0 .5rem' }}
+    >
+      <Category />
+      <Services />
     </div>
   );
 }

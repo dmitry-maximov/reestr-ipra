@@ -15,16 +15,21 @@ class TypeController {
   }
 
   async getAll(req, res) {
-    let listServices = await Type.findAndCountAll();
-    return res.json(listServices);
+    let listTypes = await Type.findAll();
+    return res.json(listTypes);
   }
 
-  async delete(req, res, next) {
-    //TO DO:
-  }
-
-  async update(req, res, next) {
-    //TO DO:
+  async delete(req, res) {
+    const { id } = req.params;
+    if (!id) {
+      return next(ApiError.badRequest('не передан параметр id'));
+    }
+    try {
+      const removeItem = await Type.destroy({ where: { id } });
+      return res.json(removeItem);
+    } catch (err) {
+      return next(ApiError.badRequest(err));
+    }
   }
 }
 

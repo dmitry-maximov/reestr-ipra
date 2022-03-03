@@ -9,20 +9,21 @@ import {
 } from '../../../api/organizationAPI';
 import { useNavigate, useParams } from 'react-router-dom';
 import { formatDateWithOutTimeZone } from '../../../utils/formatting';
+import OrganizationServices from '../OrganizationServices';
 
 const Changeorganization = (props) => {
-  const [orgs, setOrgs] = useState(null);
+  const [org, setOrg] = useState(null);
   const history = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     if (id) {
       fetchOneOrganization(id).then((data) => {
-        setOrgs({ ...data, ...data.info });
+        setOrg({ ...data, ...data.info });
         console.table({ ...data, ...data.info });
       });
     } else
-      setOrgs({
+      setOrg({
         name: '',
         fullName: '',
         supervisor: '',
@@ -42,9 +43,9 @@ const Changeorganization = (props) => {
         isBackButton={true}
         BackButtonHandler={() => history(-1)}
       >
-        {orgs && (
+        {org && (
           <Formik
-            initialValues={orgs}
+            initialValues={org}
             validate={(values) => {
               const errors = {};
               if (!values.name) {
@@ -263,6 +264,15 @@ const Changeorganization = (props) => {
                           onBlur={handleBlur}
                           value={values.description}
                         />
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBContainer>
+                </div>
+                <div className="grey-text">
+                  <MDBContainer>
+                    <MDBRow>
+                      <MDBCol size="12">
+                        <OrganizationServices services={org.services} />
                       </MDBCol>
                     </MDBRow>
                   </MDBContainer>

@@ -74,11 +74,11 @@ function AuthPage() {
               {isLogin ? (
                 <div>
                   Нет аккаунта?
-                  <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
+                  <NavLink to={REGISTRATION_ROUTE}> Зарегистрируйся!</NavLink>
                 </div>
               ) : (
                 <div>
-                  Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
+                  Есть аккаунт? <NavLink to={LOGIN_ROUTE}> Войдите!</NavLink>
                 </div>
               )}
             </div>

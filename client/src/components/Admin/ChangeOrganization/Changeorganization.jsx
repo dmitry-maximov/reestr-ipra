@@ -13,6 +13,7 @@ import OrganizationServices from '../OrganizationServices';
 
 const Changeorganization = (props) => {
   const [org, setOrg] = useState(null);
+  const [sendServices, setSendServices] = useState(null);
   const history = useNavigate();
   const { id } = useParams();
 
@@ -20,7 +21,6 @@ const Changeorganization = (props) => {
     if (id) {
       fetchOneOrganization(id).then((data) => {
         setOrg({ ...data, ...data.info });
-        console.table({ ...data, ...data.info });
       });
     } else
       setOrg({
@@ -81,8 +81,14 @@ const Changeorganization = (props) => {
               try {
                 const { name, addres, phone, ...info } = values;
                 const data = id
-                  ? changeOrganization(id, { name, addres, phone, info })
-                  : createOrganization({ name, addres, phone, info });
+                  ? changeOrganization(id, {
+                      ...{ name, addres, phone, info },
+                      services: sendServices,
+                    })
+                  : createOrganization({
+                      ...{ name, addres, phone, info },
+                      services: sendServices,
+                    });
                 if (data) {
                   alert(
                     id ? 'Данные изменены' : 'Организация успешно добавлена'
@@ -268,15 +274,20 @@ const Changeorganization = (props) => {
                     </MDBRow>
                   </MDBContainer>
                 </div>
-                <div className="grey-text">
-                  <MDBContainer>
-                    <MDBRow>
-                      <MDBCol size="12">
-                        <OrganizationServices services={org.services} />
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBContainer>
-                </div>
+                {id && (
+                  <div className="grey-text">
+                    <MDBContainer>
+                      <MDBRow>
+                        <MDBCol size="12">
+                          <OrganizationServices
+                            services={org.services}
+                            setServicesHandler={setSendServices}
+                          />
+                        </MDBCol>
+                      </MDBRow>
+                    </MDBContainer>
+                  </div>
+                )}
 
                 <div className="text-center">
                   <input

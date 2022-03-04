@@ -3,20 +3,26 @@ import Message from '../Message/Message';
 import ServicesInfo from '../ServicesInfo';
 import ChangeOrganizationServices from './ChangeOrganizationServices';
 
-function OrganizationServices({ services }) {
+function OrganizationServices({ services, setServicesHandler }) {
   const [isShowNewServices, setIsShowNewServices] = useState(false);
 
-  const showAddHandler = (e) => {
+  const showAddHandler = (e, board) => {
     e.preventDefault();
     setIsShowNewServices(!isShowNewServices);
+    if (isShowNewServices) {
+      setServicesHandler(board.items);
+    }
   };
 
   return (
     <div className="p-4">
       {isShowNewServices && (
-        <ChangeOrganizationServices showHandler={showAddHandler} />
+        <ChangeOrganizationServices
+          showHandler={showAddHandler}
+          services={services}
+        />
       )}
-      {services && services.length > 0 ? (
+      {!isShowNewServices && services && services.length > 0 ? (
         <ServicesInfo services={services} AddButtonHandler={showAddHandler} />
       ) : (
         <div>

@@ -1,10 +1,15 @@
 const ApiError = require('../handlers/apiError');
-const { Organization, OrganizationInfo, Service } = require('../models/index');
+const {
+  Organization,
+  OrganizationInfo,
+  Service,
+  OrganizationService,
+} = require('../models/index');
 
 class OrganizationController {
   async create(req, res, next) {
     try {
-      const { name, addres, phone, info } = req.body;
+      const { name, addres, phone, info, services } = req.body;
       const createdOrganization = await Organization.create({
         name,
         addres,
@@ -21,6 +26,14 @@ class OrganizationController {
           supervisor: info.supervisor,
           email: info.email,
           registration: info.registration,
+        });
+      }
+      if (services) {
+        services.map(async (service) => {
+          await OrganizationService.create({
+            organizationId: createdOrganization.id,
+            serviceId: service.id,
+          });
         });
       }
 
@@ -90,8 +103,7 @@ class OrganizationController {
     if (!currOrganization) {
       return next(ApiError.internalServer('организация не найдена'));
     }
-
-    const { name, addres, phone, info } = req.body;
+    const { name, addres, phone, info, services } = req.body;
     try {
       const upOrganization = await Organization.update(
         { name, addres, phone },
@@ -119,6 +131,14 @@ class OrganizationController {
           },
           { where: { id } }
         );
+      }
+      if (services) {
+        services.map(async (service) => {
+          await OrganizationService.create({
+            organizationId: id,
+            serviceId: service.id,
+          });
+        });
       }
       return res.json(upOrganization.dataValues);
     } catch (err) {

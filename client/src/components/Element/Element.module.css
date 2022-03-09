@@ -7,11 +7,14 @@
   display: flex;
   justify-content: flex-end;
   flex-direction: row-reverse;
-  padding-bottom: 10px;
+  padding-bottom: 1rem;
 }
 
-.element__block > div > a {
+.element__block > div > a,
+.element__block > div > h6 {
   color: #747373;
+  font-weight: 400;
+  margin-bottom: 0px;
 }
 
 .element__icon {

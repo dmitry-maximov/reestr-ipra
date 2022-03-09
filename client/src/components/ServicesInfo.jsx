@@ -1,12 +1,23 @@
 import Element from './Element/Element';
-import { SERVICE_ITEM_ROUTE } from '../utils/const';
+import { ICONS, SERVICE_ITEM_ROUTE } from '../utils/const';
+import ButtonShadow from './ButtonShadow/ButtonShadow';
 
-function ServicesInfo({ services }) {
+function ServicesInfo({ services, AddButtonHandler }) {
   return (
     <div>
-      <h5 style={{ paddingBottom: '1rem' }}>
-        <strong>Предоставляемые услуги</strong>
-      </h5>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <h5 style={{ paddingBottom: '1rem' }}>
+          <strong>Предоставляемые услуги</strong>
+        </h5>
+
+        {AddButtonHandler && (
+          <div>
+            <ButtonShadow onClick={AddButtonHandler}>
+              <i className={ICONS.plus}></i>
+            </ButtonShadow>
+          </div>
+        )}
+      </div>
 
       {services && services.length > 0 ? (
         <div className="services_wrapper">
@@ -17,6 +28,7 @@ function ServicesInfo({ services }) {
               id={item.id}
               width={'50%'}
               route={SERVICE_ITEM_ROUTE}
+              type={item.type}
             />
           ))}
         </div>

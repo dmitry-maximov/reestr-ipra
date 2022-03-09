@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -14,20 +14,14 @@ import {
   REESTR_ROUTE,
   SERVICE_ROUTE,
   LOGIN_ROUTE,
+  ADMIN_ROUTE,
 } from '../../utils/const';
 import cl from './NavBar.module.css';
 import { AuthContext } from '../../context';
 
 function NavBar() {
   const [collapse, setCollapse] = useState(false);
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const history = useNavigate();
-
-  const logout = () => {
-    setIsAuth(false);
-    localStorage.removeItem('token');
-    history(START_PAGE_ROUTE);
-  };
+  const { isAuth } = useContext(AuthContext);
 
   return (
     <header>
@@ -75,12 +69,15 @@ function NavBar() {
                     <div className="d-none d-md-inline"> Войти</div>
                   </Link>
                 ) : (
-                  <div
+                  <Link
                     className="nav-link waves-effect waves-light"
-                    onClick={logout}
+                    to={ADMIN_ROUTE}
                   >
-                    Выйти
-                  </div>
+                    <div className="d-none d-md-inline">
+                      {' '}
+                      Панель администрирования
+                    </div>
+                  </Link>
                 )}
               </MDBNavItem>
             </MDBNavbarNav>

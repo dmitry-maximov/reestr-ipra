@@ -27,8 +27,7 @@ function ServicePage() {
   const [viewType, setViewType] = useState(null);
   const [fetchType, isLoading, isError] = useFetching(async () => {
     const response = await fetchTypes();
-    const { rows } = response;
-    setTypes(rows);
+    setTypes(response);
   });
 
   useEffect(() => {
@@ -50,7 +49,7 @@ function ServicePage() {
         )}
 
         {!isError && !isLoading && types.length === 0 && (
-          <Message title={'Услуги не найдены</h5'} />
+          <Message title={'Услуги не найдены'} />
         )}
 
         {!isError && !isLoading && (

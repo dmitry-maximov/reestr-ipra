@@ -11,3 +11,18 @@ export const fetchOneOrganization = async (id) => {
   const { data } = await $host.get('api/organization/' + id);
   return data;
 };
+
+export const createOrganization = async (organization) => {
+  const { data } = await $host.post('api/organization', organization);
+  return data;
+};
+
+export const removeOrganization = async (id) => {
+  const { data } = await $host.delete('api/organization/' + id);
+  return data;
+};
+
+export const changeOrganization = async (id, organization) => {
+  const { data } = await $host.put('api/organization/' + id, organization);
+  return data;
+};

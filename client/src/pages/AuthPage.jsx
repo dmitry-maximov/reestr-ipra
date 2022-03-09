@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useInput from '../hooks/useInput';
 import { useNavigate, useLocation, NavLink } from 'react-router-dom';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
+import { ADMIN_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/const';
 import { loginUser, registration } from '../api/userAPI';
 import { MDBInput } from 'mdbreact';
 import { AuthContext } from '../context';
@@ -23,7 +23,7 @@ function AuthPage() {
       if (isLogin) {
         data = await loginUser(login.value, password.value);
         setIsAuth(true);
-        history('/');
+        history(ADMIN_ROUTE);
       } else {
         data = await registration(login.value, password.value);
         history(LOGIN_ROUTE);
@@ -37,9 +37,9 @@ function AuthPage() {
 
   return (
     <section className="wrapper">
-      <div className="box-container">
-        <div className="box">
-          <h5 className="box__w-text">
+      <div className="auth-container">
+        <div className="auth-row">
+          <h5 className="auth__text">
             {isLogin ? 'Авторизация' : 'Регистрация'}
           </h5>
           <div className="box__form">
@@ -74,11 +74,11 @@ function AuthPage() {
               {isLogin ? (
                 <div>
                   Нет аккаунта?
-                  <NavLink to={REGISTRATION_ROUTE}>Зарегистрируйся!</NavLink>
+                  <NavLink to={REGISTRATION_ROUTE}> Зарегистрируйся!</NavLink>
                 </div>
               ) : (
                 <div>
-                  Есть аккаунт? <NavLink to={LOGIN_ROUTE}>Войдите!</NavLink>
+                  Есть аккаунт? <NavLink to={LOGIN_ROUTE}> Войдите!</NavLink>
                 </div>
               )}
             </div>

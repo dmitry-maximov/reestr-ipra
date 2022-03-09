@@ -23,6 +23,11 @@ a > div.organization_container {
   background-color: #fff;
 }
 
+.organization_info {
+  display: flex;
+  justify-content: space-between;
+}
+
 .organization__header {
   font-weight: 400;
   margin-bottom: 0.75rem;

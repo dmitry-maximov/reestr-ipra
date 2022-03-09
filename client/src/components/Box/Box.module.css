@@ -1,0 +1,27 @@
+.box_container {
+  width: 100%;
+  border: 1px solid #ecf0f8;
+  background-color: #ffffff;
+  height: 90vh;
+  margin: 0.5rem;
+  overflow-y: auto;
+}
+
+.box_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ecf0f8;
+  padding: 1rem 1.5rem 0.75rem;
+}
+
+.box_header > h5 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  color: #2043b6;
+}
+
+.box_content {
+  padding: 1rem;
+}

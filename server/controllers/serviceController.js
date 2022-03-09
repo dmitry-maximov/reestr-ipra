@@ -1,5 +1,5 @@
 const ApiError = require('../handlers/apiError');
-const { Service, Organization } = require('../models/index');
+const { Service, Organization, Type } = require('../models/index');
 
 class ServiceController {
   async create(req, res, next) {
@@ -25,7 +25,10 @@ class ServiceController {
         where: { typeId },
         limit,
       });
-    else listServices = await Service.findAndCountAll();
+    else
+      listServices = await Service.findAndCountAll({
+        include: [{ model: Type, attributes: ['id', 'name'] }],
+      });
     return res.json(listServices);
   }
 
@@ -44,12 +47,17 @@ class ServiceController {
     return res.json(currService);
   }
 
-  async delete(req, res, next) {
-    //TO DO:
-  }
-
-  async update(req, res, next) {
-    //TO DO:
+  async delete(req, res) {
+    const { id } = req.params;
+    if (!id) {
+      return next(ApiError.badRequest('не передан параметр id'));
+    }
+    try {
+      const removeItem = await Service.destroy({ where: { id } });
+      return res.json(removeItem);
+    } catch (err) {
+      return next(ApiError.badRequest(err));
+    }
   }
 }
 

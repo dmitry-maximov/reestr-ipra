@@ -1,10 +1,10 @@
 FROM node:12.13-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY package*.json ./
 
-EXPOSE 8080
+EXPOSE 3000
 
 RUN npm install
 
